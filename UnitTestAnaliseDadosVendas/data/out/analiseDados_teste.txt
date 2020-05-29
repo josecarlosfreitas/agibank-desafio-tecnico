@@ -1,0 +1,4 @@
+Quantidade de clientes: 2
+Quantidade de vendedores: 1
+ID da venda mais cara: 9
+Pior vendedor: Pedro
