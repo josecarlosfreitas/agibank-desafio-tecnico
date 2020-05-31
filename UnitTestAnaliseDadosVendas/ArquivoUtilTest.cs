@@ -1,5 +1,4 @@
-﻿using AnaliseDadosVendas;
-using AnaliseDadosVendas.Util;
+﻿using AnaliseDadosVendas.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Configuration;

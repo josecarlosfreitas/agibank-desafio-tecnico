@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AnaliseDadosVendas.Util
@@ -48,9 +49,51 @@ namespace AnaliseDadosVendas.Util
 
         public static string BuscarCaminhoPastaOut()
         {
-            string caminhoPastaOut = Path.Combine(buscarCaminhoPastaData(),"out");
+            string caminhoPastaOut = Path.Combine(buscarCaminhoPastaData(), "out");
             VerificarPastaExistente(caminhoPastaOut);
             return caminhoPastaOut;
+        }
+
+        public static List<string> ConverterArquivoEmListaDeStringLinha(string file)
+        {
+            string linha;
+            List<string> strLinha = new List<string>();
+            try
+            {
+                using (StreamReader sr = new StreamReader(file))
+                {
+                    while ((linha = sr.ReadLine()) != null)
+                    {
+                        strLinha.Add(linha);
+                    }
+                }
+            }
+            catch (IOException ex)
+            {
+                throw new Exception($"Não foi possível ler o arquivo. erro gerado: {ex.Message}"); ;
+            }
+
+            return strLinha;
+        }
+
+        public static void GravarArquivoPastaOut(string file, List<string> linhasArquivo)
+        {
+            string fileName = $"{ ArquivoUtil.BuscarCaminhoPastaOut() }\\analiseDados_{ Path.GetFileName(file) }";
+
+            try
+            {
+                using (StreamWriter sw = File.CreateText(fileName))
+                {
+                    foreach (var linhaArquivo in linhasArquivo)
+                    {
+                        sw.WriteLine(linhaArquivo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         #region Validações

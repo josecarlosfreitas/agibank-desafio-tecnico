@@ -2,7 +2,6 @@
 {
     public class Cliente
     {
-        public string Id { get; set; }
         public string CNPJ { get; set; }
         public string Name { get; set; }
         public string BusinessArea { get; set; }
@@ -12,6 +11,13 @@
             CNPJ = arrlinha[1];
             Name = arrlinha[2];
             BusinessArea = arrlinha[3];
+        }
+
+        public Cliente(string cnpj, string name, string businessArea)
+        {
+            CNPJ = cnpj;
+            Name = name;
+            BusinessArea = businessArea;
         }
     }
 }

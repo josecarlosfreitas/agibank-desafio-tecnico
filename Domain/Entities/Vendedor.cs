@@ -10,7 +10,14 @@
         {
             CPF = arrlinha[1];
             Name = arrlinha[2];
-            Salary = decimal.Parse(arrlinha[3]);
+            Salary = string.IsNullOrEmpty(arrlinha[3]) ? 0 : decimal.Parse(arrlinha[3].Replace(".", ","));
+        }
+
+        public Vendedor(string cpf, string name, decimal? salary)
+        {
+            CPF = cpf;
+            Name = name;
+            Salary = salary;
         }
     }
 }

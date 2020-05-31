@@ -1,12 +1,4 @@
-﻿using Domain.Entities;
-using Domain.Entities.DTO;
-using AnaliseDadosVendas.Util;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Domain.Enums;
+﻿using Domain.Entities.DTO;
 
 namespace AnaliseDadosVendas.Builders
 {

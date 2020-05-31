@@ -9,6 +9,13 @@ namespace Domain.Entities
 
         public List<VendaItem> vendaItens { get; set; }
 
+        public Venda(int saleID, string salesmanName, List<VendaItem> vendaItens)
+        {
+            SaleID = saleID;
+            SalesmanName = salesmanName;
+            this.vendaItens = vendaItens;
+        }
+
         public Venda(string[] arrLinha)
         {
             SaleID = int.Parse(arrLinha[1]);

@@ -1,8 +1,9 @@
-﻿using Domain.Entities;
+﻿using AnaliseDadosVendas.Util;
+using Domain.Entities;
 using Domain.Entities.DTO;
 using Domain.Enums;
 using System;
-using System.IO;
+using System.Collections.Generic;
 
 namespace AnaliseDadosVendas.Builders
 {
@@ -10,42 +11,40 @@ namespace AnaliseDadosVendas.Builders
     {
         RelatorioVendaDTO _relatorioVendaDTO;
         string _file;
+        char SEPARADOR_LINHA_DE_ARQUIVO = 'ç';
 
-        public RelatorioVendaArquivoBuilder(string file) 
+        public RelatorioVendaArquivoBuilder(string file)
         {
             _file = file;
             _relatorioVendaDTO = new RelatorioVendaDTO();
         }
-       
+
         public RelatorioVendaDTO MontarDTO()
         {
-            string linha;
-            using (StreamReader sr = new StreamReader(_file))
+            List<string> linhasArquivo = ArquivoUtil.ConverterArquivoEmListaDeStringLinha(_file);
+            foreach (var linhaArquivo in linhasArquivo)
             {
-                while ((linha = sr.ReadLine()) != null)
+                string[] arrLinhaArquivo = linhaArquivo.Split(SEPARADOR_LINHA_DE_ARQUIVO);
+
+                ValidarLinhaArquivo(arrLinhaArquivo);
+
+                Enum.TryParse(arrLinhaArquivo[0], out TipoDeDado tipoDeDado);
+
+                switch (tipoDeDado)
                 {
-                    string[] arrLinha = linha.Split('ç');
+                    case TipoDeDado.Vendedor:
+                        _relatorioVendaDTO.Vendedores.Add(new Vendedor(arrLinhaArquivo));
+                        break;
 
-                    ValidarLinhaArquivo(arrLinha);
+                    case TipoDeDado.Cliente:
+                        _relatorioVendaDTO.Clientes.Add(new Cliente(arrLinhaArquivo));
+                        break;
 
-                    Enum.TryParse(arrLinha[0], out TipoDeDado tipoDeDado);
-
-                    switch (tipoDeDado)
-                    {
-                        case TipoDeDado.Vendedor:
-                            _relatorioVendaDTO.Vendedores.Add(new Vendedor(arrLinha));
-                            break;
-
-                        case TipoDeDado.Cliente:
-                            _relatorioVendaDTO.Clientes.Add(new Cliente(arrLinha));
-                            break;
-
-                        case TipoDeDado.Venda:
-                            _relatorioVendaDTO.Vendas.Add(new Venda(arrLinha));
-                            break;
-                        default:
-                            break;
-                    }
+                    case TipoDeDado.Venda:
+                        _relatorioVendaDTO.Vendas.Add(new Venda(arrLinhaArquivo));
+                        break;
+                    default:
+                        break;
                 }
             }
 

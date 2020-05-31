@@ -52,6 +52,11 @@
   <ItemGroup>
     <Compile Include="ArquivoUtilTest.cs" />
     <Compile Include="ConverterArquivoVendaTest.cs" />
+    <Compile Include="Domain\VendaTest.cs" />
+    <Compile Include="Domain\VendaItemTest.cs" />
+    <Compile Include="Domain\VendedorTest.cs" />
+    <Compile Include="Domain\ClienteTest.cs" />
+    <Compile Include="DTO\RelatorioVendaDTOTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +68,12 @@
       <Project>{d9bb484d-be54-44cd-a0ca-c8fb5b658bec}</Project>
       <Name>AnaliseDadosVendas</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{82650f31-e763-4ccd-a6d2-c5dfe92476de}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

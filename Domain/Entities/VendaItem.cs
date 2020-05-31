@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class VendaItem
     {
@@ -17,6 +11,13 @@ namespace Domain.Entities
             ItemID = int.Parse(arrLinha[0]);
             ItemQuantity = int.Parse(arrLinha[1]);
             ItemPrice = string.IsNullOrEmpty(arrLinha[2]) ? 0 : decimal.Parse(arrLinha[2].Replace(".", ","));
+        }
+
+        public VendaItem(int itemID, int itemQuantity, decimal? itemPrice)
+        {
+            ItemID = itemID;
+            ItemQuantity = itemQuantity;
+            ItemPrice = itemPrice;
         }
     }
 }

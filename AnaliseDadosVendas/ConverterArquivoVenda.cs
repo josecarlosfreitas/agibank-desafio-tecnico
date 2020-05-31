@@ -2,8 +2,8 @@
 using AnaliseDadosVendas.Util;
 using Domain.Entities.DTO;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace AnaliseDadosVendas
 {
@@ -34,22 +34,13 @@ namespace AnaliseDadosVendas
 
         private static void GerarRelatorioVenda(string file, RelatorioVendaDTO relatorioVendaDTO)
         {
-            string fileName = $"{ ArquivoUtil.BuscarCaminhoPastaOut() }\\analiseDados_{ Path.GetFileName(file) }";
-
-            try
+            ArquivoUtil.GravarArquivoPastaOut(file, new List<string>
             {
-                using (StreamWriter sw = File.CreateText(fileName))
-                {
-                    sw.WriteLine("Quantidade de clientes: {0}", relatorioVendaDTO.Clientes?.Count ?? 0);
-                    sw.WriteLine("Quantidade de vendedores: {0}", relatorioVendaDTO.Vendedores?.Count ?? 0);
-                    sw.WriteLine("ID da venda mais cara: {0}", relatorioVendaDTO.BuscarIdVendaMaisCara() ?? 0);
-                    sw.WriteLine("Pior vendedor: {0}", relatorioVendaDTO.BuscarNomePiorVendedor());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+                string.Format("Quantidade de clientes: {0}", relatorioVendaDTO.Clientes?.Count ?? 0),
+                string.Format("Quantidade de vendedores: {0}", relatorioVendaDTO.Vendedores?.Count ?? 0),
+                string.Format("ID da venda mais cara: {0}", relatorioVendaDTO.BuscarIdVendaMaisCara() ?? 0),
+                string.Format("Pior vendedor: {0}", relatorioVendaDTO.BuscarNomePiorVendedor())
+            });
         }
     }
 }
