@@ -1,8 +1,8 @@
 ﻿using Domain.Entities.DTO;
 
-namespace AnaliseDadosVendas.Builders
+namespace AnaliseDadosVendas.Factory
 {
-    public interface IRelatorioVendaBuilder
+    public interface IRelatorioVendaFactory
     {
         RelatorioVendaDTO MontarDTO();
     }

@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\IRelatorioVendaBuilder.cs" />
-    <Compile Include="Builders\RelatorioVendaArquivoBuilder.cs" />
+    <Compile Include="Factory\IRelatorioVendaFactory.cs" />
+    <Compile Include="Factory\RelatorioVendaArquivoFactory.cs" />
     <Compile Include="ConverterArquivoVenda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,4 @@
-﻿using AnaliseDadosVendas.Builders;
+﻿using AnaliseDadosVendas.Factory;
 using AnaliseDadosVendas.Util;
 using Domain.Entities.DTO;
 using System;
@@ -16,7 +16,7 @@ namespace AnaliseDadosVendas
             {
                 ArquivoUtil.ValidarArquivo(file, ".txt");
 
-                relatorioVendaDTO = new RelatorioVendaArquivoBuilder(file).MontarDTO();
+                relatorioVendaDTO = new RelatorioVendaArquivoFactory(file).MontarDTO();
 
                 GerarRelatorioVenda(file, relatorioVendaDTO);
 

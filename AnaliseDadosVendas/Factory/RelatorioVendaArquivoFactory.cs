@@ -5,15 +5,15 @@ using Domain.Enums;
 using System;
 using System.Collections.Generic;
 
-namespace AnaliseDadosVendas.Builders
+namespace AnaliseDadosVendas.Factory
 {
-    public class RelatorioVendaArquivoBuilder : IRelatorioVendaBuilder
+    public class RelatorioVendaArquivoFactory : IRelatorioVendaFactory
     {
         RelatorioVendaDTO _relatorioVendaDTO;
         string _file;
         char SEPARADOR_LINHA_DE_ARQUIVO = 'ç';
 
-        public RelatorioVendaArquivoBuilder(string file)
+        public RelatorioVendaArquivoFactory(string file)
         {
             _file = file;
             _relatorioVendaDTO = new RelatorioVendaDTO();
