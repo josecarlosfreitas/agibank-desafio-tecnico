@@ -8,8 +8,6 @@ namespace Domain.Entities.DTO
         public List<Vendedor> Vendedores { get; set; }
         public List<Cliente> Clientes { get; set; }
         public List<Venda> Vendas { get; set; }
-        public int? IdVendaMaisCara { get; set; }
-        public string NomePiorVendedor { get; set; }
 
         public RelatorioVendaDTO()
         {

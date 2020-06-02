@@ -55,21 +55,6 @@ namespace AnaliseDadosVendas.Factory
 
         private void ValidarLinhaArquivo(string[] arrLinha)
         {
-            ValidarLinhaArquivoVazia(arrLinha);
-
-            ValidarLinhaArquivoTipoDeDado(arrLinha);
-        }
-
-        private void ValidarLinhaArquivoVazia(string[] arrLinha)
-        {
-            if (arrLinha.Length <= 0)
-            {
-                throw new Exception("Linha está vazia.");
-            }
-        }
-
-        private void ValidarLinhaArquivoTipoDeDado(string[] arrLinha)
-        {
             if (!Enum.TryParse(arrLinha[0], out TipoDeDado tipoDeDado))
             {
                 throw new Exception($"Não foi possivel converter '{arrLinha[0]}' em int.");
