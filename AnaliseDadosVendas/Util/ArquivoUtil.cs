@@ -6,36 +6,11 @@ namespace AnaliseDadosVendas.Util
 {
     public static class ArquivoUtil
     {
-        private static FileSystemWatcher _monitorar;
-
-        public static void MonitorarPastaEGerarRelatorio()
-        {
-            _monitorar = new FileSystemWatcher(BuscarCaminhoPastaIn(), "*.*")
-            {
-                IncludeSubdirectories = true
-            };
-            _monitorar.Created += OnFileCreated;
-            _monitorar.EnableRaisingEvents = true;
-
-            LerArquivosPastaIn();
-        }
-        private static void OnFileCreated(object sender, FileSystemEventArgs e)
-        {
-            ConverterArquivoVenda.AnalisarArquivoEGerarRelatorioVenda(e.FullPath);
-        }
-
-        private static void LerArquivosPastaIn()
-        {
-            foreach (string file in Directory.EnumerateFiles(BuscarCaminhoPastaIn(), "*.*"))
-            {
-                ConverterArquivoVenda.AnalisarArquivoEGerarRelatorioVenda(file);
-            }
-        }
-
         public static string buscarCaminhoPastaData()
         {
-            string pastaDiretorioAtual = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string pastaData = Path.GetFullPath(Path.Combine(pastaDiretorioAtual, "..//..", "data"));
+            string pastaHome = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            string pastaData = Path.Combine(pastaHome, "data");
+            
             VerificarPastaExistente(pastaData);
             return pastaData;
         }

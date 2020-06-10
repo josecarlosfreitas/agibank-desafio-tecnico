@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Domain.Entities.DTO;
+﻿using AnaliseDadosVendas.Domain.Entities;
+using AnaliseDadosVendas.Domain.Entities.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 

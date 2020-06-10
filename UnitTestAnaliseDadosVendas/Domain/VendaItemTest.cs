@@ -1,7 +1,7 @@
-﻿using Domain.Entities;
+﻿using AnaliseDadosVendas.Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestAnaliseDadosVendas
+namespace UnitTestAnaliseDadosVendas.Domain
 {
     [TestClass]
     public class VendaItemTest

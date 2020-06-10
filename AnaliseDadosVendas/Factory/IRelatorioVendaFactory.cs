@@ -1,9 +1,9 @@
-﻿using Domain.Entities.DTO;
+﻿using AnaliseDadosVendas.Domain.Entities.DTO;
 
 namespace AnaliseDadosVendas.Factory
 {
     public interface IRelatorioVendaFactory
     {
-        RelatorioVendaDTO MontarDTO();
+        RelatorioVendaDTO MontarDTO(string file);
     }
 }
